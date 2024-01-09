@@ -1,10 +1,10 @@
 <?php
 define('DB_HOST' , 'localhost');
-define('DB_USER' , '_YOUR_USERNAME_');
-define('DB_PASS' , '_YOUR_PASSWORD_');
-define('DB_NAME' , '_YOUR_DATABASE_NAME_');
+define('DB_USER' , 'root');
+define('DB_PASS' , '');
+define('DB_NAME' , 'db_wiki');
 define('APPROOT' , dirname(dirname(__FILE__)));
 
-define('URLROOT' , '_YOUR_URL_'); 
-define('SITENAME' , '_YOUR_SITENAME_');
+define('URLROOT' , 'http://localhost/wiki-x'); 
+define('SITENAME' , 'WIKI-X');
 ?>
