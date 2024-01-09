@@ -6,9 +6,9 @@ require_once 'config/config.php';
 function Autoloader($class) {
     $paths = [
         APPROOT."/libraries/",
-        APPROOT."/services/",
-        APPROOT."/models/",
-        APPROOT."/security/"
+        APPROOT."/services/interfaces/",
+        APPROOT."/services/implementations/",
+        APPROOT."/models/"
     ];
 
     foreach ($paths as $path) {
@@ -23,4 +23,6 @@ function Autoloader($class) {
 spl_autoload_register('Autoloader');
 
 $init = new Core();
+
+
 ?>
