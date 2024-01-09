@@ -5,6 +5,6 @@ define('DB_PASS' , '');
 define('DB_NAME' , 'db_wiki');
 define('APPROOT' , dirname(dirname(__FILE__)));
 
-define('URLROOT' , 'http://localhost/wiki-x'); 
+define('URLROOT' , 'http://localhost/wiki-x/'); 
 define('SITENAME' , 'WIKI-X');
 ?>
