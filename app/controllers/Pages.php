@@ -57,6 +57,48 @@
         }
         public function login(){
             $this->view("pages/login");
+            
+            if(!isset($_SESSION["login_token"])){
+                $_SESSION["login_token"] = trim(bin2hex(random_bytes(32)));
+            }
+            
+            if(isset($_POST["login"])){
+                if(!isset($_SESSION["login_token"]) || !hash_equals($_SESSION["login_token"],$_POST["token"])){
+                    echo json_encode("INVALID TOKEN CSRF TRY AGAIN");
+                }
+                else{
+                   $email = $_POST["email"];
+                   $pw = $_POST["pw"];
+
+                   $loggingUser = new AppUser();
+                   $loggingUser->email = $email;
+                   $loggingUser->password = $pw;
+                   
+                   $securityService = new SecurityServiceImp();
+
+                   try{
+                      $loggingUserData = $securityService->login($loggingUser);
+                      if($loggingUserData){
+                         $role = $securityService->checkForRole($loggingUserData->userId);
+                         if($role == "author"){
+                            echo json_encode("author");
+                         }
+                         else{
+                            echo json_encode("author");
+                         }
+                      }
+                      else {
+                        echo json_encode("err");         
+                      }
+                   }
+                   catch(PDOException $e){
+                    die($e->getMessage());
+                }
+
+                }
+            }
+            
+
         }
 
 

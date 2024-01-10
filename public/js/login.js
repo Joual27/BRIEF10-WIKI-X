@@ -8,6 +8,7 @@ $(document).ready(function(){
         e.preventDefault();
         let email = $("#email").val();
         let pw = $("#pw").val();
+        let token = $("#token").val();
 
         $("#formError").text("");
         $("#emailErr").text("");
@@ -42,7 +43,8 @@ $(document).ready(function(){
                     data : {
                         'login' : 1,
                         'email' : email ,
-                        'pw' : pw
+                        'pw' : pw ,
+                        'token' : token
                     },
                     success : function(response){
                         if(response == "success"){
