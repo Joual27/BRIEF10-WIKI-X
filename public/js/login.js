@@ -39,7 +39,7 @@ $(document).ready(function(){
                  $.ajax({
                     url : "http://localhost/wiki-x/pages/login",
                     type : "POST" ,
-                    dataType : "json",
+                    dataType : "html",
                     data : {
                         'login' : 1,
                         'email' : email ,
@@ -47,12 +47,15 @@ $(document).ready(function(){
                         'token' : token
                     },
                     success : function(response){
-                        if(response == "success"){
-                            window.location.href = "http://localhost/wiki-x/author/wikis";
-                        }
-                        else{
-                            $("#formError").text("INVALID CREDENTIALS . TRY AGAIN ! ");
-                        }
+                      if(response.includes("admin")){
+                        window.location.href = "http://localhost/wiki-x/admin/wikis";
+                      }
+                      else if(response.includes("author")){
+                        window.location.href = "http://localhost/wiki-x/author/wikis";
+                      }
+                      else{
+                        $("#formError").text("INVALID CREDENTIALS TRY AGAIN !");
+                      }
                     }
                  })
             }

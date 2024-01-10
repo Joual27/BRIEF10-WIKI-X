@@ -5,7 +5,10 @@
 
 class Author extends Controller{
     public function wikis(){
-       $this->view("author/index");
+        $data = [
+            "role" => $_SESSION["roleName"]
+        ];
+       $this->view("author/index",$data);
     }
 }
 

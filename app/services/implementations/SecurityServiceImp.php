@@ -27,7 +27,6 @@ class SecurityServiceImp implements SecurityServiceI{
         $this->db->bind(":pw", $user->password);
         $this->db->bind(":email", $user->email);
         $this->db->bind(":img", "profile.png");
-
         try{
             $this->db->execute();
         }
@@ -44,6 +43,12 @@ class SecurityServiceImp implements SecurityServiceI{
         }
         catch(PDOException $e){
             die($e->getMessage());
+        }
+    }
+
+    public function checkForAdmin(){
+        if(empty($_SESSION["roleName"])){
+            
         }
     }
 

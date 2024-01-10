@@ -68,7 +68,7 @@
                 }
                 else{
                    $email = $_POST["email"];
-                   $pw = $_POST["pw"];
+                   $pw = password_verify($_POST["pw"],PASSWORD_DEFAULT);
 
                    $loggingUser = new AppUser();
                    $loggingUser->email = $email;
@@ -79,16 +79,20 @@
                    try{
                       $loggingUserData = $securityService->login($loggingUser);
                       if($loggingUserData){
+                         $_SESSION["username"] = $loggingUserData->username;
+                         $_SESSION["userId"] = $loggingUserData->userId;
                          $role = $securityService->checkForRole($loggingUserData->userId);
-                         if($role == "author"){
+                         if($role->roleName == "author"){
+                            $_SESSION["roleName"] = "author";
                             echo json_encode("author");
                          }
                          else{
-                            echo json_encode("author");
+                            $_SESSION["roleName"] = "admin";
+                            echo json_encode("admin");
                          }
                       }
                       else {
-                        echo json_encode("err");         
+                        echo json_encode("err");                     
                       }
                    }
                    catch(PDOException $e){

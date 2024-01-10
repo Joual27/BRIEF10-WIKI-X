@@ -1,1 +1,1 @@
-im WIKIS FROM AUTHOR
+YO IM  A FUCKING <?= $data["role"] ?>

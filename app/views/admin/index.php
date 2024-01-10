@@ -1,1 +1,1 @@
-YO IM STATS FROM ADMIN 
+YO IM  A FUCKING <?= $data["role"] ?>
