@@ -1,1 +1,1 @@
-YO IM  A FUCKING <?= $data["role"] ?>
+YO IM  A FUCKING <?= $_SESSION["roleName"] ?> MY USERNAME IS FREAKING <?= $_SESSION["username"] ?> id : <?= $_SESSION["userId"] ?>
