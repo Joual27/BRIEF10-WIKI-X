@@ -1,7 +1,6 @@
 <?php
 
     class Pages extends Controller{
-        public $userModel;
         public function __construct()
         {
 
@@ -9,30 +8,27 @@
         public function index() {
             $data = [
                 'title' => 'You Welcomee to Our Website',
-
             ];
             $this->view('pages/index' , $data );
         }
 
 
         public function register(){
+            
+            $this->view("pages/register");
 
             if (!isset($_SESSION['csrf_token'])) {
                 $_SESSION['csrf_token'] = trim(bin2hex(random_bytes(32)));
             }
 
-            
-
             if(isset($_POST["add"])){
-                var_dump($_SESSION['csrf_token']);
-                var_dump($_POST['csrf_token']);
                 if (!isset($_POST['csrf_token']) || !hash_equals($_POST['csrf_token'], $_SESSION['csrf_token'])) {
-                    echo json_encode($_SESSION['csrf_token']);
+                    echo json_encode("invalid crsf token !");
                 }
                 else{
                     $userId = uniqid();
                     $username = $_POST["username"];
-                    $pw = $_POST["pw"];
+                    $pw = password_hash($_POST["pw"],PASSWORD_DEFAULT);
                     $email = $_POST["email"];
 
                     $userToAdd = new AppUser();
@@ -47,7 +43,9 @@
                     $roleOfUserService = new RoleOfUserServiceImp();
                     try{
                         $securityService->register($userToAdd);
-                        $roleOfUserService->addRoleOfUser($roleOfUser);
+                        $roleOfUserService->addRoleOfUser($roleOfUser); 
+                        // header("Location:". URLROOT ."/pages/login"); 
+
                         echo json_encode("success");
                     }
                     catch(PDOException $e){
@@ -55,7 +53,7 @@
                     }
                 }
             }
-            $this->view("pages/register");
+
         }
         public function login(){
             $this->view("pages/login");

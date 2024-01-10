@@ -22,7 +22,7 @@
                                     id="email"
                                     name="email"
                                     class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                    type="email"
+                                    type="text"
                                     placeholder="Email"
                                 />
                                 <span id="emailError" class="text-red-500"></span>
@@ -78,6 +78,7 @@
                                 </span>
                             </button>
                             <span id="formError" class="text-red-500 font-medium mt-[0.5rem]"></span>
+                            <span id="validationMsg" class="text-violet-500 font-medium"></span>
                             <a href="<?= URLROOT ?>" class="text-gray-500 mt-[0.5rem] block underline">
                                 Back To Home Page
                             </a>
@@ -95,6 +96,6 @@
     </div>
 </div>
 
-<script defer src="<?php echo URLROOT?>/js/FormValidator.js"></script>
+<script defer src="<?php echo URLROOT?>/js/registration.js"></script>
 
 <?php require APPROOT . '/views/incFile/footer.php'; ?>

@@ -8,14 +8,16 @@ class SecurityServiceImp implements SecurityServiceI{
         $this->db = Database::getInstance();
     }
     public function login(AppUser $user){
-        // $loginQuery = "SELECT * FROM appuser WHERE email = :email AND pw = :pw";
-        // $this->db->query($loginQuery);
-        // $this->db->bind(":email",$user->email);
-        // $this->db->bind(":pw",$user->password);
-        // try{
-        //     $this->db->execute();
-        // }
-
+        $loginQuery = "SELECT * FROM appuser WHERE email = :email AND pw = :pw";
+        $this->db->query($loginQuery);
+        $this->db->bind(":email",$user->email);
+        $this->db->bind(":pw",$user->password);
+        try{
+            return $this->db->fetchOneRow();
+        }
+        catch(PDOException $e){
+            die($e->getMessage());
+        }
     }
     public function register(AppUser $user){
         $registerQuery = "INSERT INTO appuser VALUES (:userId , :username , :pw , :email , :img , NOW())" ;
@@ -33,6 +35,18 @@ class SecurityServiceImp implements SecurityServiceI{
             die($e->getMessage());
         }
     }
+    public function checkForRole($userId){
+        $checkQuery = "SELECT * FROM roleOfUser WHERE userId = :userId";
+        $this->db->query($checkQuery);
+        $this->db->bind(":userId",$userId);
+        try{
+            return $this->db->fetchOneRow();
+        }
+        catch(PDOException $e){
+            die($e->getMessage());
+        }
+    }
+
 }
 
 
