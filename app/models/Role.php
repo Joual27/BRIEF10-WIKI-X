@@ -13,6 +13,7 @@ class Role{
     }
     public function setRoleName($roleName){
         $this->roleName = $roleName ;
+        
     }
 }
 

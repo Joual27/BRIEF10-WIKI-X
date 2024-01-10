@@ -7,7 +7,7 @@
       <span class="self-center text-[1.1rem] font-semibold whitespace-nowrap dark:text-violet-400">WIKI-X</span>
   </a>
   <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-              <a href="<?= URLROOT."/pages/login" ?>" target="_blank"
+              <a href="<?= URLROOT."pages/login" ?>" 
                     class="hidden md:inline-flex items-center gap-[5px] w-full px-6 py-3 mb-2 mr-2 text-sm  font-medium text-gray-900  border border-gray-200 rounded-lg  focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-inherit  dark:text-violet-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                     <img class="w-[20px] h-[20px]" src="<?= URLROOT."/imgs/login.png" ?>" alt="hero image">
                     LOGIN
@@ -50,12 +50,12 @@
             </p>
 
             <div class= "w-[50%] mx-auto mt-[4rem] flex justify-center flex-col gap-[5px] md:w-[50%] lg:flex-row lg:justify-start lg:mx-0">
-                <a href="<?= URLROOT."/pages/login" ?>" target="_blank"
+                <a href="<?= URLROOT."pages/login" ?>" 
                     class="inline-flex items-center gap-[5px]  w-full px-8 py-3 mb-2 mr-2 text-sm font-medium text-gray-900  border border-gray-200 rounded-lg sm:w-auto focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-inherit dark:text-violet-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                     <img class="w-[20px] h-[20px]" src="<?= URLROOT."/imgs/login.png" ?>" alt="hero image">
                     LOGIN
                 </a>
-                <a href="<?= URLROOT."/pages/register" ?>" target="_blank"
+                <a href="<?= URLROOT."pages/register" ?>" 
                     class="inline-flex items-center gap-[5px]  w-full px-8 py-3 mb-2 mr-2 text-sm font-medium text-gray-900  border border-gray-200 rounded-lg sm:w-auto focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-inherit dark:text-violet-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                     <img class="w-[20px] h-[20px]" src="<?= URLROOT."/imgs/register.png" ?>" alt="hero image">
                     REGISTER

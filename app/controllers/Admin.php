@@ -10,7 +10,7 @@ class Admin extends Controller{
        $data = [
          "role" => $_SESSION["roleName"]
        ];
-       $this->view("admin/index",$data);
+       $this->view("admin/wikis",$data);
     }
 }
 
