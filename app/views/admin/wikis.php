@@ -9,11 +9,9 @@
    <div class="w-[80%] ml-[15%] ">
         <div class="flex justify-between" >
             <div class="mb-[1rem]">
-                <p class='font-bold text-[1.2rem] text-violet-400'>WIKIS DASHBOARD</p>
+                <p class='font-semibold text-[1.25rem] text-violet-500'>WIKIS DASHBOARD</p>
             </div>
-            <div class="mb-[1rem]">
-                <button class="py-[0.6rem] px-[1.2rem] bg-violet-500 text-white font-semibold rounded-lg" id="showArticleForm">+ Add Wiki</a></button>
-            </div>
+           
         </div>
         <div class="relative overflow-x-auto shadow-md my-[2rem]">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -29,10 +27,13 @@
                             CONTENT
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            HOLDER
+                            IMAGE
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            INSURANCE
+                            POSTED BY
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            CATEGORY
                         </th>
                         <th scope="col" class="px-6 py-3">
                             ACTIONS

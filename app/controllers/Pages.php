@@ -28,7 +28,7 @@
                 else{
                     $userId = uniqid();
                     $username = $_POST["username"];
-                    $pw = password_hash($_POST["pw"],PASSWORD_DEFAULT);
+                    $pw = password_hash($_POST["pw"],PASSWORD_BCRYPT);
                     $email = $_POST["email"];
 
                     $userToAdd = new AppUser();
@@ -57,53 +57,50 @@
         }
         public function login(){
             $this->view("pages/login");
-            
-            if(!isset($_SESSION["login_token"])){
+        
+            if (!isset($_SESSION["login_token"])) {
                 $_SESSION["login_token"] = trim(bin2hex(random_bytes(32)));
             }
-            
-            if(isset($_POST["login"])){
-                if(!isset($_SESSION["login_token"]) || !hash_equals($_SESSION["login_token"],$_POST["token"])){
+        
+            if (isset($_POST["login"])) {
+                if (!isset($_SESSION["login_token"]) || !hash_equals($_SESSION["login_token"], $_POST["token"])) {
                     echo json_encode("INVALID TOKEN CSRF TRY AGAIN");
-                }
-                else{
-                   $email = $_POST["email"];
-                   $pw = password_verify($_POST["pw"],PASSWORD_DEFAULT);
-
-                   $loggingUser = new AppUser();
-                   $loggingUser->email = $email;
-                   $loggingUser->password = $pw;
-                   
-                   $securityService = new SecurityServiceImp();
-
-                   try{
-                      $loggingUserData = $securityService->login($loggingUser);
-                      if($loggingUserData){
-                         $_SESSION["username"] = $loggingUserData->username;
-                         $_SESSION["userId"] = $loggingUserData->userId;
-                         $role = $securityService->checkForRole($loggingUserData->userId);
-                         if($role->roleName == "author"){
-                            $_SESSION["roleName"] = "author";
-                            echo json_encode("author");
-                         }
-                         else{
-                            $_SESSION["roleName"] = "admin";
-                            echo json_encode("admin");
-                         }
-                      }
-                      else {
-                        echo json_encode("err");                     
-                      }
-                   }
-                   catch(PDOException $e){
-                    die($e->getMessage());
-                }
-
+                } else {
+                    $email = $_POST["email"];
+                    $pw = $_POST["pw"];
+        
+                    $loggingUser = new AppUser();
+                    $loggingUser->email = $email;
+                    $loggingUser->password = $pw; 
+        
+                    $securityService = new SecurityServiceImp();
+        
+                    try {
+                        $loggingUserData = $securityService->login($loggingUser);
+                        if ($loggingUserData) {
+                                $_SESSION["username"] = $loggingUserData->username;
+                                $_SESSION["userId"] = $loggingUserData->userId;
+                                $role = $securityService->checkForRole($loggingUserData->userId);
+        
+                                if ($role->roleName == "author") {
+                                    $_SESSION["roleName"] = "author";
+                                    echo json_encode("author");
+                                } else {
+                                    $_SESSION["roleName"] = "admin";
+                                    echo json_encode("admin");
+                                }
+                            
+                        } else {
+                            echo json_encode("Invalid credentials");
+                        }
+                    } catch (PDOException $e) {
+                        die($e->getMessage());
+                    }
                 }
             }
-            
-
         }
+        
+        
 
 
     }

@@ -8,14 +8,17 @@ class SecurityServiceImp implements SecurityServiceI{
         $this->db = Database::getInstance();
     }
     public function login(AppUser $user){
-        $loginQuery = "SELECT * FROM appuser WHERE email = :email AND pw = :pw";
+        $loginQuery = "SELECT * FROM appuser WHERE email = :email";
         $this->db->query($loginQuery);
-        $this->db->bind(":email",$user->email);
-        $this->db->bind(":pw",$user->password);
-        try{
-            return $this->db->fetchOneRow();
-        }
-        catch(PDOException $e){
+        $this->db->bind(":email", $user->email);
+    
+        try {
+            $userData = $this->db->fetchOneRow();
+            if ($userData && password_verify($user->password, $userData->pw)){
+                return $userData;
+            }
+            return null; 
+        } catch (PDOException $e) {
             die($e->getMessage());
         }
     }
