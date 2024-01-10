@@ -48,7 +48,18 @@ class SecurityServiceImp implements SecurityServiceI{
 
     public function checkForAdmin(){
         if(empty($_SESSION["roleName"])){
-            
+            header("Location:".URLROOT);
+        }
+        else if($_SESSION["roleName"] == "author"){
+            header("Location:".URLROOT."author/wikis");
+        }
+    }
+    public function checkForAuthor(){
+        if(empty($_SESSION["roleName"])){
+            header("Location:".URLROOT);
+        }
+        else if($_SESSION["roleName"] == "admin"){
+            header("Location:".URLROOT."admin/wikis");
         }
     }
 

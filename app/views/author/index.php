@@ -1,1 +1,1 @@
-YO IM  A FUCKING <?= $data["role"] ?>
+YO IM  A FUCKING author
