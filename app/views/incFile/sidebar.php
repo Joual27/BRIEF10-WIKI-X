@@ -8,13 +8,13 @@
             </a>
          </li>
          <li>
-               <a href="<?php echo URLROOT?>pages/dashboard" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer ">
+               <a href="<?php echo URLROOT?>admin/wikis" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer <?php if($data["page"] == "wikis"){ echo "bg-gray-600"; }  ;?>">
                     <img class="w-[30px]" src="<?php echo URLROOT ?>/imgs/wiki.png" alt="">
                     <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Wikis</span>
                </a>
          </li>
          <li>
-            <a href="<?php echo URLROOT?>pages/insurances" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer ">
+            <a href="<?php echo URLROOT?>admin/tags" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer <?php if($data["page"] == "tags"){ echo "bg-gray-600"; }  ;?>">
                <img class="w-[30px]" src="<?php echo URLROOT ?>/imgs/tags.png" alt="">
                <span class="flex-1 ms-3 whitespace-nowrap">Tags</span>
             </a>

@@ -48,48 +48,7 @@
 
    </div>
 
-   <div class="absolute w-[100%] h-[100%] bg-gray-500 inset-0 bg-opacity-50 backdrop-filter backdrop-blur-md flex justify-center items-center hidden" id="addArticleForm">
-     <form method="POST" class="pb-[2rem] pt-[0.7rem] w-[30%] bg-gray-50 flex flex-col gap-[20px] rounded-xl" id="articleForm">
-        <div class="w-[90%] mx-auto flex justify-end">
-            <img src="<?= URLROOT?>/pics/close.png" alt="" class="w-[35px] h-[35px] cursor-pointer" id="closeBtn">
-        </div>
-        <div class="w-[100%] mb-[1rem]">
-            <p class="text-center text-[1.2rem] font-medium text-violet-500">Add Article Form</p>
-        </div>
-        <div class="w-[100%]">
-            <input type="text"  id="title" placeholder="enter The Title" class="bg-violet-100 px-[0.4rem] py-[0.5rem] rounded-lg w-[70%] ml-[15%] focus:outline-none font-medium">
-            <p id="firstNameError" class="text-red-500 font-medium ml-[15%]"></p>
-        </div>
-        
-        <div>
-            <input type="text" id="content" placeholder="enter Article's content" class="bg-violet-100 px-[0.4rem] py-[0.5rem] rounded-lg w-[70%] ml-[15%] focus:outline-none font-medium">
-            <p class="text-red-500 font-medium  ml-[15%]" id="phoneError"></p>
-        </div>
-        <div class="w-[100%]">
-            <input type="text"  id="searchC" placeholder="Search For Customer" class="bg-violet-100 px-[0.4rem] py-[0.5rem] rounded-lg w-[70%] ml-[15%] focus:outline-none font-medium">
-            <p id="firstNameError" class="text-red-500 font-medium ml-[15%]"></p>
-        </div>
-        <div>
-            <select  id="holder" class="bg-violet-100 px-[0.4rem] py-[0.5rem] rounded-lg w-[70%] ml-[15%] focus:outline-none font-medium" multiple="yes">
-                <option value="" >Select Article's Holder</option>
-            </select>
-        </div>
-        <div>
-            <select  id="insurance" class="bg-violet-100 px-[0.4rem] py-[0.5rem] rounded-lg w-[70%] ml-[15%] focus:outline-none font-medium">
-                <option value="">Select Article's Insurance</option>
-            </select>
-        </div>
-        <div class="w-[100%] flex justify-center mt-[1rem]">
-            <input  type="submit" class="bg-violet-500 text-white w-[20%] mx-auto py-[0.4rem] rounded-lg cursor-pointer" id="addArticleBtn" value="Submit">
-        </div>
-        <div class="w-[100%] flex justify-center mt-[1rem]">
-            <input type="button" class="bg-violet-500 text-white w-[20%] mx-auto py-[0.4rem] rounded-lg cursor-pointer hidden editBtn" id="updateArticleBtn"  value="Update">
-        </div>
-        <div>
-             <p id="articleError" class="text-red-500 font-medium  ml-[15%]"></p>
-        </div>
-     </form>
-   </div>
+   
 </main>
 
 

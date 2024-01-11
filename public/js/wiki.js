@@ -30,7 +30,22 @@ $(document).ready(function(){
     })
 
 
-    
+    $("#wikis").on("click",".delete", function(){
+        let wikiId = $(this).closest("tr").find("td:eq(0)").text().trim();
+
+        $.ajax({
+            url : "http://localhost/wiki-x/admin/deleteWiki",
+            type : "POST",
+            dataType : "json",
+            data : {
+              "delete" : 1,
+              "id": wikiId
+            } ,
+            success : function(response){
+                fetchWikis(response);
+            }
+        })
+    })
 
     
 })
