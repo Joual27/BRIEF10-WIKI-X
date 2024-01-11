@@ -20,7 +20,7 @@
             </a>
          </li>
          <li>
-            <a href="<?php echo URLROOT?>pages/articles" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer ">
+            <a href="<?php echo URLROOT?>admin/categories" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer <?php if($data["page"] == "cat"){ echo "bg-gray-600"; }  ;?>">
             <img class="w-[30px]" src="<?php echo URLROOT ?>/imgs/cat.png" alt="">
                <span class="flex-1 ms-3 whitespace-nowrap">Categories</span>
             </a>

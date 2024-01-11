@@ -74,7 +74,23 @@ class Admin extends Controller{
            die($e->getMessage());
          }
 
+      }
+    }
 
+    public function deleteTag(){
+      if(isset($_POST["delete"])){
+        $id = $_POST["id"];
+
+        $tagService = new TagServiceImp();
+        
+        try{
+            $tagService->deleteTag($id);
+            $tags = $tagService->getAllTags();
+            echo json_encode($tags);
+        }
+        catch(PDOException $e){
+           die($e->getMessage());
+         }
       }
     }
 
@@ -102,6 +118,92 @@ class Admin extends Controller{
           die($e->getMessage());
          }
        }
+    }
+
+
+    public function categories(){
+      $securityService = new SecurityServiceImp();
+      $securityService->checkForAdmin();
+      $data = [
+        "page" => "cat"
+      ];
+      $this->view("admin/categories",$data);
+    }
+
+    public function getAllCategories(){
+      $categoryService = new CategoryServiceImp();
+
+      try{
+        $categories = $categoryService->getAllCategories();
+        echo json_encode($categories);
+      }
+      catch(PDOException $e){
+        die($e->getMessage());
+       }
+    }
+
+
+    public function addCategory(){
+      if(isset($_POST["add"])){
+        $id = uniqid();
+        $name = $_POST["name"];
+        $desc = $_POST["desc"];
+
+
+        $categoryToAdd = new Category();
+        $categoryToAdd->categoryId = $id;
+        $categoryToAdd->categoryName = $name;
+        $categoryToAdd->categoryDesc = $desc;
+
+        $categoryService = new CategoryServiceImp();
+        try{
+          $categoryService->addCategory($categoryToAdd);
+          $categories = $categoryService->getAllCategories();
+          echo json_encode($categories);
+        }
+        catch(PDOException $e){
+          die($e->getMessage());
+         }
+      }
+    }
+
+
+    public function updateCategory(){
+       if(isset($_POST["edit"])){
+         $id = $_POST["id"];
+         $categoryName = $_POST["name"];
+         $categoryDesc = $_POST["desc"];
+
+         $categoryToUpdate = new Category();
+         $categoryToUpdate->categoryId = $id;
+         $categoryToUpdate->categoryName = $categoryName;
+         $categoryToUpdate->categoryDesc = $categoryDesc;
+         $categoryService = new CategoryServiceImp();
+         try{
+          $categoryService->updateCategory($categoryToUpdate);
+          $categories = $categoryService->getAllCategories();
+          echo json_encode($categories);
+         }
+         catch(PDOException $e){
+          die($e->getMessage());
+         }
+       }
+    }
+
+
+    public function deleteCategory(){
+      if(isset($_POST["delete"])){
+        $id = $_POST["id"];
+        $categoryService = new CategoryServiceImp();
+        try{
+          $categoryService->deleteCategory($id);
+          $categories = $categoryService->getAllCategories();
+          echo json_encode($categories);
+        }
+        catch(PDOException $e){
+          die($e->getMessage());
+         }
+      }
     }
 
 }

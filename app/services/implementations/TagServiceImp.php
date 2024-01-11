@@ -47,6 +47,15 @@ class TagServiceImp implements TagServiceI{
     }
     }
     public function deleteTag($tagId){
+       $deleteTagQuery = "DELETE FROM tag WHERE tagId = :id";
+       $this->db->query($deleteTagQuery);
+       $this->db->bind(":id", $tagId);
+       try{
+         $this->db->execute();
+       }
+       catch(PDOException $e){
+        die($e->getMessage());
+    }
 
     }
 }

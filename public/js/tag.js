@@ -2,15 +2,18 @@ $(document).ready(function(){
     $("#showTagForm").on("click",function(){
         if($("#addTagForm").hasClass("hidden")){
             $("#tagName").val("");
+            $("#tagErr").text("");
             $("#addTagForm").removeClass("hidden");
         }
     })
 
     $("#closeForm").click(function(){
         $("#addTagForm").addClass("hidden");
+        $("#tagName").val("");
     })
     $("#closeEditForm").click(function(){
         $("#editTagForm").addClass("hidden");
+        $("#name").val("");
     })
 
 
@@ -19,9 +22,9 @@ $(document).ready(function(){
         $("#tags").empty();
         $.each(response,function(index,row){
             $("#tags").append(
-                ` <div class="w-[200px] p-6 bg-white border border-gray-200 rounded-lg shadow flex flex-col gap-[10px] container">
+                ` <div class="w-[200px] p-6 bg-white border border-gray-200 rounded-lg shadow flex flex-col gap-[20px] container">
                         <div class="flex gap-[10px] items-center ">
-                            <img src="<?= URLROOT ?>/imgs/tags.png" alt="">
+                            <img src="http://localhost/wiki-x/imgs/tags.png" alt="">
                             <p class="font-medium" id="tagName">${row.tagName}</p>
                         </div>
                         <div class="flex gap-[10px]" data-id="${row.tagId}">
@@ -44,7 +47,7 @@ $(document).ready(function(){
 
     $("#addT").on("click",function(){
         $("#tagErr").text("");
-        let tagName = $("#tagName").val();
+        let tagName = $(".tagName").val();
 
         let pattern = /^[a-zA-Z]+$/;
 
@@ -52,8 +55,6 @@ $(document).ready(function(){
             $("#tagErr").text("Tag Names accept only letters !");
         }
         else{
-             $("#addTagForm").addClass("hidden");
-
              $.ajax({
                 url : "http://localhost/wiki-x/admin/addTag",
                 type : "POST",
@@ -63,6 +64,7 @@ $(document).ready(function(){
                     'name' : tagName
                 },
                 success : function(response){
+                    $("#addTagForm").addClass("hidden");
                     fetchTags(response);
                 }
              })
@@ -99,6 +101,23 @@ $(document).ready(function(){
             },
             success : function(response){
                 $("#editTagForm").addClass("hidden");
+                fetchTags(response);
+            }
+        })
+    })
+
+
+    $("#tags").on("click",".delete" , function(){
+        let id = $(this).closest("div").data("id");
+        $.ajax({
+            url : "http://localhost/wiki-x/admin/deleteTag",
+            type : "post" ,
+            dataType : "json" ,
+            data :{
+               'delete' : 1,
+               'id' : id
+            },
+            success : function(response){
                 fetchTags(response);
             }
         })

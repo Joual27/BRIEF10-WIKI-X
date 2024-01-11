@@ -19,7 +19,7 @@
         </div>
        
              
-        <div id="addTagForm" class="absolute w-full h-full inset-0 bg-opacity-50 backdrop-filter backdrop-blur-md flex justify-center items-center bg-gray-500 hidden">
+        <div id="addCatForm" class="absolute w-full h-full inset-0 bg-opacity-50 backdrop-filter backdrop-blur-md flex justify-center items-center bg-gray-500 hidden">
             <div class="container px-4 sm:px-8 mx-auto max-w-lg ">
 
                 <div class="wrapper bg-white rounded-sm shadow-lg ">
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="card-mail flex items-center mt-10 mb-6">
-                            <input type="text" id="tagName" class="font-medium border-l border-t border-b border-gray-200 rounded-l-md w-full text-base md:text-lg px-3 py-2 focus:outline-none" placeholder="Tag Name">
+                            <input type="text" class="font-medium border-l border-t border-b border-gray-200 rounded-l-md w-full text-base md:text-lg px-3 py-2 focus:outline-none tagName" placeholder="Tag Name">
                             <button class="bg-violet-500 hover:bg-violet-600 hover:border-violet-600 text-white font-bold capitalize px-3 py-2 text-base md:text-lg rounded-r-md border-t border-r border-b border-violet-500" id="addT">Submit</button>
                         </div>
                         <p id="tagErr" class="text-red-500 font-semibold"></p>
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-        <div id="editTagForm" class="absolute w-full h-full inset-0 bg-opacity-50 backdrop-filter backdrop-blur-md flex justify-center items-center bg-gray-500 hidden">
+        <div id="editCatForm" class="absolute w-full h-full inset-0 bg-opacity-50 backdrop-filter backdrop-blur-md flex justify-center items-center bg-gray-500 hidden">
             <div class="container px-4 sm:px-8 mx-auto max-w-lg ">
 
                 <div class="wrapper bg-white rounded-sm shadow-lg ">
@@ -52,7 +52,7 @@
                             <input type="text" id="name" class=" border-l border-t border-b border-gray-200 rounded-l-md w-full text-base md:text-lg px-3 py-2 focus:outline-none" placeholder="Tag Name">
                             <button class="bg-violet-500 hover:bg-violet-600 hover:border-violet-600 text-white font-bold capitalize px-3 py-2 text-base md:text-lg rounded-r-md border-t border-r border-b border-violet-500" id="editT">Update</button>
                         </div>
-                        <p id="tagErr" class="text-red-500 font-semibold"></p>  
+                        <p id="EditTagErr" class="text-red-500 font-semibold"></p>  
                     </div>
                 </div>
             </div>
