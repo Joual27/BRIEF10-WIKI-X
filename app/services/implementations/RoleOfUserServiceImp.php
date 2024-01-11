@@ -10,7 +10,7 @@ class RoleOfUserServiceImp implements RoleOfUserServiceI{
         $addROUQuery = "INSERT INTO roleofuser VALUES (:userId , :roleName)";
         $this->db->query($addROUQuery);
         $this->db->bind(":userId", $ROU->user->userId);
-        $this->db->bind(":roleName", "author");
+        $this->db->bind(":roleName",$ROU->role->getRoleName());
         try{
             $this->db->execute();
         }

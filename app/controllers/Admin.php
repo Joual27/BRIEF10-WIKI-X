@@ -7,11 +7,24 @@ class Admin extends Controller{
     public function wikis(){
        $securityService = new SecurityServiceImp();
        $securityService->checkForAdmin();
-       $data = [
-         "role" => $_SESSION["roleName"]
-       ];
-       $this->view("admin/wikis",$data);
+       $this->view("admin/wikis");
     }
+
+    public function getAllWikis(){
+      $wikiService = new WikiServiceImp();
+      try{
+        $wikis = $wikiService->getAllWikis();
+        echo json_encode($wikis);
+      }
+      catch(PDOException $e){
+       die($e->getMessage());
+      }
+    }
+
+    public function deleteWiki(){
+      
+    }
+
 }
 
 

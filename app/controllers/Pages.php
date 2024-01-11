@@ -36,9 +36,13 @@
                     $userToAdd->username = $username ;
                     $userToAdd->password = $pw ;
                     $userToAdd->email = $email ;
+
+                    $role = new Role();
+                    $role->setRoleName("author");
                     
                     $roleOfUser = new RoleOfUser();
                     $roleOfUser->user = $userToAdd ;
+                    $roleOfUser->role = $role;
                     $securityService = new SecurityServiceImp();
                     $roleOfUserService = new RoleOfUserServiceImp();
                     try{

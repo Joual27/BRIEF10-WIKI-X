@@ -40,7 +40,7 @@
                         </th>
                     </tr>
                 </thead>
-                <tbody id="articles">
+                <tbody id="wikis">
                 
                 </tbody>           
             </table>
@@ -91,6 +91,9 @@
      </form>
    </div>
 </main>
+
+
+<script defer src="<?php echo URLROOT?>/js/wiki.js"></script>
 
 
 <?php require APPROOT . '/views/incFile/footer.php'; ?>
