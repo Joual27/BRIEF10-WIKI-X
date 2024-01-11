@@ -20,7 +20,62 @@ class Admin extends Controller{
         "page" => "tags"
       ];
       $this->view("admin/tags",$data);
+    }
 
+    public function getAllTags(){
+      $tagService = new TagServiceImp();
+      try{
+        $tags = $tagService->getAllTags();
+        echo json_encode($tags);
+      }
+      catch(PDOException $e){
+       die($e->getMessage());
+      }
+    }
+
+    public function addTag(){
+      if(isset($_POST["add"])){
+        $id = uniqid();
+        $tagName = $_POST["name"];
+
+        $tagToAdd = new Tag();
+        $tagToAdd->tagId = $id;
+        $tagToAdd->tagName = $tagName;
+
+        $tagService = new TagServiceImp();
+        try{
+            $tagService->addTag($tagToAdd);
+            $tags = $tagService->getAllTags();
+            echo json_encode($tags);
+        }
+        catch(PDOException $e){
+          die($e->getMessage());
+         }
+
+      }
+    }
+
+    public function updateTag(){
+      if(isset($_POST["edit"])){
+        $tagId = $_POST["id"];
+        $tagName = $_POST["name"];
+
+        $tagToUpdate = new Tag();
+        $tagToUpdate->tagId = $tagId;
+        $tagToUpdate->tagName = $tagName;
+        $tagService = new TagServiceImp();
+        
+          try{
+            $tagService->updateTag($tagToUpdate);
+            $tags = $tagService->getAllTags();
+            echo json_encode($tags);
+        }
+        catch(PDOException $e){
+           die($e->getMessage());
+         }
+
+
+      }
     }
 
     public function getAllWikis(){
