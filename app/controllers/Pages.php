@@ -61,13 +61,14 @@
         }
         public function login(){
             $this->view("pages/login");
-        
-            if (!isset($_SESSION["login_token"])) {
+            if(!isset($_SESSION["login_token"])) {
                 $_SESSION["login_token"] = trim(bin2hex(random_bytes(32)));
             }
-        
             if (isset($_POST["login"])) {
-                if (!isset($_SESSION["login_token"]) || !hash_equals($_SESSION["login_token"], $_POST["token"])) {
+                // var_dump($_SESSION["login_token"]);
+                // echo "<br>";
+                // var_dump($_POST["token"]);
+                if (!isset($_SESSION["login_token"]) || !hash_equals($_SESSION["login_token"],$_POST["token"])) {
                     echo json_encode("INVALID TOKEN CSRF TRY AGAIN");
                 } else {
                     $email = $_POST["email"];
@@ -95,13 +96,18 @@
                                 }
                             
                         } else {
-                            echo json_encode("Invalid credentials");
+                            echo json_encode("err");
                         }
                     } catch (PDOException $e) {
                         die($e->getMessage());
                     }
                 }
             }
+        }
+
+        public function logout(){
+            session_destroy();
+            header("Location:".URLROOT);
         }
         
         

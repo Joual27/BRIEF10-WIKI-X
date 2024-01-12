@@ -206,6 +206,52 @@ class Admin extends Controller{
       }
     }
 
+    public function admin(){
+      $securityService = new SecurityServiceImp();
+      $securityService->checkForAdmin();
+      $data = [
+        "page" => "admins"
+      ];
+      $this->view("admin/admins",$data);
+    }
+
+    public function getAllAuthors(){
+      $userService = new UserServiceImp();
+      
+      try{
+          $authors = $userService->getAllAuthors();
+          echo json_encode($authors);
+      }
+      catch(PDOException $e){
+        die($e->getMessage());
+       }
+    }
+
+    public function addNewAdmin(){
+      if(isset($_POST["affect"])){
+        $id = $_POST["id"];
+        $userService = new UserServiceImp();
+        try{
+          $userService->affectNewAdmin($id);
+          $authors = $userService->getAllAuthors();
+          echo json_encode($authors);
+      }
+        catch(PDOException $e){
+          die($e->getMessage());
+        }
+      }
+    }
+
+
+    public function Dashboard(){
+      $securityService = new SecurityServiceImp();
+      $securityService->checkForAdmin();
+      $data = [
+        "page" => "dash"
+      ];
+      $this->view("admin/dashboard",$data);
+    }
+
 }
 
 

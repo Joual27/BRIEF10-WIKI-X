@@ -9,11 +9,9 @@
    <div class="w-[80%] ml-[15%] ">
         <div class="flex justify-between" >
             <div class="mb-[1rem]">
-                <p class='font-semibold text-[1.25rem] text-violet-500'>TAGS DASHBOARD</p>
+                <p class='font-semibold text-[1.25rem] text-violet-500'>STATS DASHBOARD</p>
             </div>
-            <div class="my-[1rem]">
-                <button class="py-[0.6rem] px-[1.2rem] bg-violet-500 text-white font-semibold rounded-lg" id="showTagForm">+ Add Tag</a></button>
-            </div>
+            
         </div>
         <div class="relative overflow-x-auto my-[2rem] flex gap-[3rem] flex-wrap" id="tags">
         </div>
@@ -62,7 +60,7 @@
    
 </main>
 
-<script defer src="<?php echo URLROOT?>/js/tag.js"></script>
+<script defer src="<?php echo URLROOT?>/js/dashboard.js"></script>
 
 
 <?php require APPROOT . '/views/incFile/footer.php'; ?>

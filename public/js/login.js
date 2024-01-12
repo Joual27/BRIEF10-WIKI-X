@@ -48,13 +48,17 @@ $(document).ready(function(){
                     },
                     success : function(response){
                       if(response.includes("admin")){
-                        window.location.href = "http://localhost/wiki-x/admin/wikis";
+                        window.location.href = "http://localhost/wiki-x/admin/dashboard";
                       }
                       else if(response.includes("author")){
                         window.location.href = "http://localhost/wiki-x/author/wikis";
                       }
-                      else{
+                      else if(response.includes("err")){
                         $("#formError").text("INVALID CREDENTIALS TRY AGAIN !");
+                          
+                      }
+                      else{
+                        $("#formError").text("INVALID CSRF TOKEN TRY AGAIN !");
                       }
                     }
                  })

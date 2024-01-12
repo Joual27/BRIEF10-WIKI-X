@@ -69,8 +69,7 @@ $(document).ready(function(){
                 }
              })
         }
-
-        
+   
     })
 
 
@@ -78,11 +77,8 @@ $(document).ready(function(){
 
     $("#tags").on("click",".edit" , function(){
         $("#editTagForm").removeClass("hidden");
-
         let tagName = $(this).closest(".container").find("#tagName").text().trim();
         tagId = $(this).closest("div").data("id");
-        
-
         $("#name").val(tagName);
 
     })
