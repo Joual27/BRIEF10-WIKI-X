@@ -85,6 +85,7 @@
                         if ($loggingUserData) {
                                 $_SESSION["username"] = $loggingUserData->username;
                                 $_SESSION["userId"] = $loggingUserData->userId;
+                                $_SESSION["userImg"] = $loggingUserData->userImg;
                                 $role = $securityService->checkForRole($loggingUserData->userId);
         
                                 if ($role->roleName == "author") {
