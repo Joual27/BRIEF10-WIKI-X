@@ -12,7 +12,7 @@ class CategoryServiceImp implements CategoryServiceI{
         $this->db = Database::getInstance();
     }
     public function getAllCategories(){
-        $fetchCategoriesQuery = "SELECT * FROM category";
+        $fetchCategoriesQuery = "SELECT * FROM category ORDER BY created_at DESC";
         $this->db->query($fetchCategoriesQuery);
         try{
             return $this->db->fetchMultipleRows();

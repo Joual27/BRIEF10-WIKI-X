@@ -49,7 +49,6 @@
                         $securityService->register($userToAdd);
                         $roleOfUserService->addRoleOfUser($roleOfUser); 
                         // header("Location:". URLROOT ."/pages/login"); 
-
                         echo json_encode("success");
                     }
                     catch(PDOException $e){

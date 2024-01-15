@@ -246,8 +246,18 @@ class Admin extends Controller{
     public function Dashboard(){
       $securityService = new SecurityServiceImp();
       $securityService->checkForAdmin();
+      $statsService = new StatsServiceImp();
+      $overallUsers = $statsService->overallUsers();
+      $overallcategories = $statsService->overallCategories();
+      $overallTags = $statsService->overallTags();
+      $overallWikis = $statsService->overallWikis();
       $data = [
-        "page" => "dash"
+        "page" => "dash",
+        "overallU" => $overallUsers->usersCount,
+        "overallT" => $overallTags->tagCount,
+        "overallC" => $overallcategories->categoryCount ,
+        "overallW" => $overallWikis->wikiCount
+
       ];
       $this->view("admin/dashboard",$data);
     }
